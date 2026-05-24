@@ -230,6 +230,7 @@ h2 {
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
+  width: 100%;
   margin-bottom: 26px;
 }
 
@@ -279,6 +280,9 @@ h2 {
   gap: 12px;
   min-height: 62px;
   padding-block: 8px;
+  border-color: rgb(255 255 255 / 0.82);
+  background: #fff;
+  color: #121212;
 }
 
 .button-bandcamp img {
@@ -590,10 +594,36 @@ a:focus-visible {
 
   .hero-copy {
     justify-content: flex-start;
+    align-items: flex-start;
     width: 100%;
     min-height: calc(100svh - 66px);
     margin: 0;
     padding: max(50svh, 330px) 20px 46px;
+  }
+
+  .hero-copy .eyebrow {
+    order: 3;
+    align-self: center;
+    margin: 0 0 12px;
+  }
+
+  .hero-copy h1 {
+    order: 1;
+  }
+
+  .hero-lead {
+    order: 2;
+  }
+
+  .stream-icons {
+    order: 4;
+    align-self: stretch;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .hero-actions {
+    order: 5;
   }
 
   h1 {
