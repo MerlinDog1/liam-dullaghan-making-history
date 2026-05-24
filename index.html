@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Liam Dullaghan's Making History, fully remastered and streaming now."
+    />
+    <meta property="og:title" content="Liam Dullaghan - Making History" />
+    <meta
+      property="og:description"
+      content="Fully remastered, featuring 3 extra tracks from the original sessions and one brand new unreleased song."
+    />
+    <meta property="og:image" content="./assets/hero-wide.jpg" />
+    <title>Liam Dullaghan - Making History</title>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a class="brand" href="#top">Liam Dullaghan</a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#stream">Stream</a>
+        <a href="#vinyl">Vinyl</a>
+        <a href="#live">Live</a>
+        <a class="icon-link" href="#" aria-label="Facebook">
+          <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+        </a>
+        <a class="icon-link" href="#" aria-label="Instagram">
+          <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a class="icon-link" href="mailto:hello@example.com" aria-label="Email Liam Dullaghan">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        </a>
+      </nav>
+    </header>
+
+    <div class="mobile-panel" id="mobile-menu" aria-hidden="true">
+      <button class="panel-close" type="button" aria-label="Close menu">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <nav aria-label="Mobile navigation">
+        <a href="#stream">Stream</a>
+        <a href="#vinyl">Vinyl</a>
+        <a href="#live">Live</a>
+        <a href="#shakespeare-road">Shakespeare Road</a>
+      </nav>
+      <div class="panel-socials" aria-label="Social links">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a href="mailto:hello@example.com" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+      </div>
+    </div>
+    <div class="scrim" data-scrim></div>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-mask hero-mask-desktop" src="./assets/desktop-history-mask.svg" alt="" aria-hidden="true" />
+        <img class="hero-mask hero-mask-mobile" src="./assets/animated-history-mask.svg" alt="" aria-hidden="true" />
+        <div class="hero-copy">
+          <p class="eyebrow">Streaming now</p>
+          <h1 id="hero-title">
+            <span>Liam Dullaghan</span>
+            <span>Making</span>
+            <span>History</span>
+          </h1>
+          <p class="hero-lead">
+            Fully remastered, featuring 3 extra tracks from original sessions and
+            one brand new unreleased song
+            <a href="#shakespeare-road">"A Light on Shakespeare Road"</a>.
+          </p>
+          <div class="stream-icons" id="stream" aria-label="Major streaming services">
+            <a href="#" aria-label="Spotify"><i class="fa-brands fa-spotify" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Apple Music"><i class="fa-brands fa-apple" aria-hidden="true"></i></a>
+            <a href="#" aria-label="YouTube Music"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Amazon Music"><i class="fa-brands fa-amazon" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Deezer"><i class="fa-brands fa-deezer" aria-hidden="true"></i></a>
+            <a href="#" aria-label="SoundCloud"><i class="fa-brands fa-soundcloud" aria-hidden="true"></i></a>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#">Buy now on Bandcamp</a>
+            <a class="button button-secondary" href="#vinyl">Register interest for vinyl pre-order</a>
+          </div>
+          <p class="bandcamp-note">Includes exclusive demo compilation.</p>
+        </div>
+      </section>
+
+      <section class="vinyl-section" id="vinyl" aria-labelledby="vinyl-title">
+        <div class="section-copy">
+          <p class="eyebrow">Vinyl pre-order interest</p>
+          <h2 id="vinyl-title">Let's dream a dream we can share</h2>
+          <p>
+            We are exploring the possibility of releasing a very limited run vinyl
+            release of "Making History" in the autumn. If you would like to be
+            notified when the pre-order goes live, drop your email below. No
+            obligation to buy. This is just a way to gauge interest and see if it
+            is possible. Realistically, we need maybe 100 people to make this a
+            reality.
+          </p>
+        </div>
+
+        <div class="interest-block">
+          <form class="interest-form" id="interest-form">
+            <label for="email">Email address</label>
+            <div class="email-row">
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+              <button type="submit">Notify me</button>
+            </div>
+            <p class="form-note" id="form-note" role="status" aria-live="polite">
+              Signup connection coming later. This preview stores interest locally.
+            </p>
+          </form>
+          <div class="counter" aria-label="Vinyl interest counter">
+            <strong id="interest-count">0</strong>
+            <span>people have registered interest</span>
+          </div>
+          <div class="share-row" aria-label="Share links">
+            <span>Make history. Share this with your friends.</span>
+            <a href="#" aria-label="Share on Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Share by email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Copy page link" data-copy-link><i class="fa-solid fa-link" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="song-section" id="shakespeare-road" aria-labelledby="song-title">
+        <div class="song-image" aria-hidden="true"></div>
+        <div class="song-copy">
+          <p class="eyebrow">New unreleased song</p>
+          <h2 id="song-title">A Light on Shakespeare Road</h2>
+          <p class="dedication">For Pat Fish</p>
+          <p>
+            A brand new unreleased song included with the remastered edition of
+            "Making History". A small light left on for the people, rooms, and
+            records that shaped the sessions.
+          </p>
+          <a class="text-link" href="#stream">Listen when streaming links go live</a>
+        </div>
+      </section>
+
+      <section class="live-section" id="live" aria-labelledby="live-title">
+        <p class="eyebrow">Live</p>
+        <h2 id="live-title">Dates to follow</h2>
+        <p>Live announcements and launch events can sit here when confirmed.</p>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

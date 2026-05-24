@@ -1,0 +1,590 @@
+:root {
+  color-scheme: dark;
+  --bg: #030303;
+  --bg-soft: #0a0a0a;
+  --ink: #f5f1e8;
+  --muted: #b8b0a3;
+  --faint: #81786c;
+  --line: rgb(255 255 255 / 0.16);
+  --line-strong: rgb(255 255 255 / 0.34);
+  --gold: #d9bc67;
+  --gold-dark: #171207;
+  --radius: 8px;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100svh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+}
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 14px clamp(20px, 4vw, 58px);
+  border-bottom: 1px solid var(--line);
+  background: rgb(0 0 0 / 0.76);
+  backdrop-filter: blur(18px);
+}
+
+.brand {
+  color: var(--ink);
+  font-size: clamp(0.98rem, 1.6vw, 1.22rem);
+  font-weight: 900;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.desktop-nav,
+.panel-socials,
+.stream-icons,
+.hero-actions,
+.share-row {
+  display: flex;
+  align-items: center;
+}
+
+.desktop-nav {
+  justify-content: flex-end;
+  gap: clamp(13px, 1.8vw, 24px);
+  color: rgb(255 255 255 / 0.84);
+  font-size: 0.82rem;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.desktop-nav a {
+  text-decoration: none;
+}
+
+.desktop-nav a:not(.icon-link) {
+  padding-block: 8px;
+}
+
+.desktop-nav a:hover {
+  color: var(--ink);
+}
+
+.icon-link,
+.panel-socials a,
+.stream-icons a,
+.share-row a {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.04);
+  text-decoration: none;
+}
+
+.icon-link:hover,
+.panel-socials a:hover,
+.stream-icons a:hover,
+.share-row a:hover {
+  border-color: var(--line-strong);
+  background: rgb(255 255 255 / 0.1);
+}
+
+.menu-toggle {
+  display: none;
+}
+
+.mobile-panel,
+.scrim {
+  display: none;
+}
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-mask-mobile {
+  display: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.05) 0%, rgb(0 0 0 / 0.28) 43%, rgb(0 0 0 / 0.84) 67%, #000 100%),
+    linear-gradient(180deg, rgb(0 0 0 / 0.08) 0%, rgb(0 0 0 / 0.32) 100%);
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: min(46vw, 660px);
+  min-height: 100svh;
+  margin-left: auto;
+  padding: 118px clamp(38px, 6vw, 86px) 64px 28px;
+}
+
+.eyebrow {
+  margin: 0 0 16px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1 {
+  display: grid;
+  gap: 0.1em;
+  margin-bottom: 24px;
+  font-size: clamp(3.15rem, 6vw, 5.9rem);
+  line-height: 0.88;
+}
+
+h1 span:first-child {
+  font-size: 0.44em;
+  line-height: 1;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: clamp(2.5rem, 6vw, 6.1rem);
+  line-height: 0.9;
+}
+
+.hero-lead {
+  max-width: 51ch;
+  margin-bottom: 26px;
+  color: rgb(255 255 255 / 0.8);
+  font-size: clamp(1rem, 1.34vw, 1.18rem);
+  font-weight: 700;
+  line-height: 1.48;
+}
+
+.hero-lead a,
+.text-link {
+  color: var(--gold);
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.stream-icons {
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+.stream-icons a {
+  width: 46px;
+  height: 46px;
+  font-size: 1.28rem;
+}
+
+.hero-actions {
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.button,
+.interest-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  padding: 0 20px;
+  font: inherit;
+  font-weight: 950;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.button:hover,
+.interest-form button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary,
+.interest-form button {
+  background: var(--gold);
+  color: var(--gold-dark);
+}
+
+.button-secondary {
+  border-color: var(--line-strong);
+  background: rgb(255 255 255 / 0.06);
+  color: var(--ink);
+}
+
+.bandcamp-note {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 720;
+}
+
+.vinyl-section,
+.song-section,
+.live-section {
+  border-top: 1px solid var(--line);
+}
+
+.vinyl-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.74fr);
+  gap: clamp(32px, 6vw, 92px);
+  padding: clamp(72px, 9vw, 126px) clamp(20px, 6vw, 88px);
+  background: var(--bg-soft);
+}
+
+.section-copy p,
+.song-copy p,
+.live-section p {
+  max-width: 67ch;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 1.4vw, 1.18rem);
+  line-height: 1.66;
+}
+
+.interest-block {
+  align-self: center;
+  display: grid;
+  gap: 18px;
+}
+
+.interest-form {
+  display: grid;
+  gap: 12px;
+}
+
+.interest-form label {
+  font-size: 0.88rem;
+  font-weight: 900;
+}
+
+.email-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.interest-form input {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0 14px;
+  background: #050505;
+  color: var(--ink);
+  font: inherit;
+}
+
+.form-note {
+  min-height: 20px;
+  margin: 0;
+  color: var(--faint);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.counter {
+  display: grid;
+  gap: 4px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #070707;
+}
+
+.counter strong {
+  color: var(--ink);
+  font-size: clamp(2.8rem, 6vw, 4.7rem);
+  line-height: 0.92;
+}
+
+.counter span {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.share-row {
+  flex-wrap: wrap;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 800;
+}
+
+.song-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1fr);
+  min-height: 72svh;
+  background: #000;
+}
+
+.song-image {
+  min-height: 420px;
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.08), rgb(0 0 0 / 0.72)),
+    url("./assets/hero-wide.jpg") center / cover no-repeat;
+}
+
+.song-copy {
+  align-self: center;
+  padding: clamp(46px, 7vw, 94px);
+}
+
+.dedication {
+  color: var(--ink) !important;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.live-section {
+  padding: clamp(60px, 8vw, 100px) clamp(20px, 6vw, 88px);
+  background: var(--bg-soft);
+}
+
+input:focus,
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgb(217 188 103 / 0.42);
+  outline-offset: 3px;
+}
+
+@media (max-width: 940px) {
+  .site-header {
+    min-height: 66px;
+    padding: 12px 18px;
+  }
+
+  .menu-toggle {
+    display: inline-grid;
+    gap: 4px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    place-content: center;
+    background: rgb(255 255 255 / 0.04);
+    padding: 0;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 16px;
+    height: 2px;
+    background: var(--ink);
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .brand {
+    margin-right: auto;
+    margin-left: 10px;
+  }
+
+  .mobile-panel {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    width: min(82vw, 340px);
+    padding: 18px;
+    border-right: 1px solid var(--line);
+    background: #030303;
+    transform: translateX(-104%);
+    transition: transform 220ms ease;
+  }
+
+  body.menu-open .mobile-panel {
+    transform: translateX(0);
+  }
+
+  .panel-close {
+    align-self: flex-start;
+    display: inline-grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.04);
+    color: var(--ink);
+    font-size: 1.1rem;
+  }
+
+  .mobile-panel nav {
+    display: grid;
+    gap: 2px;
+    margin-top: 42px;
+  }
+
+  .mobile-panel nav a {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+    font-size: 1.55rem;
+    font-weight: 950;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .panel-socials {
+    gap: 10px;
+    margin-top: auto;
+  }
+
+  .scrim {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    display: block;
+    background: rgb(0 0 0 / 0.58);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 220ms ease;
+  }
+
+  body.menu-open .scrim {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .hero {
+    min-height: calc(100svh - 66px);
+    padding-top: 66px;
+  }
+
+  .hero-mask-desktop {
+    display: none;
+  }
+
+  .hero-mask-mobile {
+    display: block;
+    object-position: center top;
+  }
+
+  .hero::after {
+    background:
+      linear-gradient(180deg, rgb(0 0 0 / 0) 0%, rgb(0 0 0 / 0.14) 42%, rgb(0 0 0 / 0.76) 65%, #000 100%),
+      linear-gradient(90deg, rgb(0 0 0 / 0.16), rgb(0 0 0 / 0), rgb(0 0 0 / 0.16));
+  }
+
+  .hero-copy {
+    justify-content: flex-start;
+    width: 100%;
+    min-height: calc(100svh - 66px);
+    margin: 0;
+    padding: max(50svh, 330px) 20px 46px;
+  }
+
+  h1 {
+    font-size: clamp(2.55rem, 11.2vw, 3.45rem);
+  }
+
+  .hero-lead {
+    max-width: 34ch;
+    font-size: 1rem;
+    line-height: 1.45;
+  }
+
+  .vinyl-section,
+  .song-section {
+    grid-template-columns: 1fr;
+  }
+
+  .song-image {
+    min-height: 52svh;
+  }
+}
+
+@media (max-width: 560px) {
+  .stream-icons a {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero-actions,
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .email-row {
+    grid-template-columns: 1fr;
+  }
+
+  .vinyl-section,
+  .song-copy,
+  .live-section {
+    padding-inline: 20px;
+  }
+}
