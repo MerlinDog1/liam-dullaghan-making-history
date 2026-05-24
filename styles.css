@@ -7,8 +7,6 @@
   --faint: #81786c;
   --line: rgb(255 255 255 / 0.16);
   --line-strong: rgb(255 255 255 / 0.34);
-  --gold: #d9bc67;
-  --gold-dark: #171207;
   --accent: #0088cc;
   --accent-dark: #006699;
   --accent-glow: rgb(0 136 204 / 0.22);
@@ -173,7 +171,7 @@ a {
 
 .eyebrow {
   margin: 0 0 16px;
-  color: var(--gold);
+  color: var(--accent);
   font-size: 0.78rem;
   font-weight: 950;
   letter-spacing: 0;
@@ -222,7 +220,7 @@ h2 {
 
 .hero-lead a,
 .text-link {
-  color: var(--gold);
+  color: var(--accent);
   font-weight: 900;
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -272,8 +270,8 @@ h2 {
 
 .button-primary,
 .interest-form button {
-  background: var(--gold);
-  color: var(--gold-dark);
+  background: var(--accent);
+  color: var(--accent-dark);
 }
 
 .button-secondary {
@@ -307,23 +305,15 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: stretch;
 }
 
 .vinyl-photo {
   width: 100%;
-  max-width: 420px;
+  max-width: 380px;
   border-radius: var(--radius);
   box-shadow: 0 16px 60px rgba(0, 0, 0, 0.6);
-  animation: spin 10s linear infinite;
-  animation-play-state: paused;
-}
-
-.vinyl-section:hover .vinyl-photo {
-  animation-play-state: running;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
+  object-fit: cover;
 }
 
 
