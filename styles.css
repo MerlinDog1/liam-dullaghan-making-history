@@ -619,7 +619,7 @@ a:focus-visible {
     order: 4;
     align-self: stretch;
     justify-content: center;
-    gap: 8px;
+    gap: 14px;
     min-height: 88px;
     margin-bottom: 14px;
     border: 1px solid rgb(99 153 168 / 0.48);
@@ -657,9 +657,15 @@ a:focus-visible {
 
 @media (max-width: 640px) {
   .stream-icons a {
-    width: 44px;
-    height: 44px;
+    width: 58px;
+    height: 58px;
     background: rgb(0 0 0 / 0.26);
+    font-size: 1.55rem;
+  }
+
+  .button-bandcamp {
+    min-height: 76px;
+    padding-block: 4px;
   }
 
   .hero-actions,
