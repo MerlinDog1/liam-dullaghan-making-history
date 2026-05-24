@@ -7,9 +7,9 @@
   --faint: #81786c;
   --line: rgb(255 255 255 / 0.16);
   --line-strong: rgb(255 255 255 / 0.34);
-  --accent: #d97706;
-  --accent-dark: #b45309;
-  --accent-glow: rgb(217 119 6 / 0.18);
+  --accent: #6399a8;
+  --accent-dark: #142024;
+  --accent-glow: rgb(99 153 168 / 0.24);
   --radius: 8px;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -228,6 +228,7 @@ h2 {
 
 .stream-icons {
   flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
   margin-bottom: 26px;
 }
@@ -274,17 +275,40 @@ h2 {
   color: var(--accent-dark);
 }
 
+.button-bandcamp {
+  gap: 12px;
+  min-height: 62px;
+  padding-block: 8px;
+}
+
+.button-bandcamp img {
+  width: 92px;
+  height: auto;
+  flex: 0 0 auto;
+}
+
+.button-copy {
+  display: grid;
+  gap: 2px;
+  text-align: left;
+  line-height: 1.05;
+}
+
+.button-copy span:first-child {
+  font-size: 0.98rem;
+}
+
+.button-copy span:last-child {
+  font-size: 0.72rem;
+  font-weight: 900;
+  opacity: 0.82;
+  text-transform: uppercase;
+}
+
 .button-secondary {
   border-color: var(--line-strong);
   background: rgb(255 255 255 / 0.06);
   color: var(--ink);
-}
-
-.bandcamp-note {
-  margin-bottom: 0;
-  color: var(--muted);
-  font-size: 0.94rem;
-  font-weight: 720;
 }
 
 .vinyl-section,
@@ -295,27 +319,35 @@ h2 {
 
 .vinyl-section {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.74fr);
-  gap: clamp(32px, 6vw, 92px);
+  grid-template-columns: minmax(220px, 0.54fr) minmax(0, 1fr) minmax(340px, 0.74fr);
+  gap: clamp(28px, 4.8vw, 72px);
   padding: clamp(72px, 9vw, 126px) clamp(20px, 6vw, 88px);
   background: var(--bg-soft);
 }
 
 .vinyl-photo-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
+  align-self: start;
 }
 
 .vinyl-photo {
+  display: block;
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.6);
   object-fit: cover;
+  box-shadow: 0 28px 80px rgb(0 0 0 / 0.34);
+  animation: none !important;
+  transform: none !important;
+  transition: none !important;
 }
 
+.vinyl-photo:hover,
+.vinyl-photo-wrap:hover .vinyl-photo {
+  animation: none !important;
+  transform: none !important;
+}
 
 .section-copy p,
 .song-copy p,
@@ -431,7 +463,7 @@ h2 {
 input:focus,
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid rgb(217 188 103 / 0.42);
+  outline: 3px solid var(--accent-glow);
   outline-offset: 3px;
 }
 
