@@ -10,7 +10,7 @@
     <meta property="og:title" content="Liam Dullaghan - Making History" />
     <meta
       property="og:description"
-      content="Fully remastered, featuring 3 extra tracks from the original sessions and one brand new unreleased song."
+      content="Fully remastered, featuring 3 extra tracks from the original sessions."
     />
     <meta property="og:image" content="./assets/hero-wide.jpg" />
     <title>Liam Dullaghan - Making History</title>
@@ -76,9 +76,8 @@
             <span>History</span>
           </h1>
           <p class="hero-lead">
-            Fully remastered, featuring 3 extra tracks from original sessions and
-            one brand new unreleased song
-            <a href="#shakespeare-road">"A Light on Shakespeare Road"</a>.
+            Fully remastered, featuring 3 extra tracks from original sessions,
+            including <a href="#shakespeare-road">"A Light on Shakespeare Road"</a>.
           </p>
           <div class="stream-icons" id="stream" aria-label="Major streaming services">
             <a href="#" aria-label="Spotify"><i class="fa-brands fa-spotify" aria-hidden="true"></i></a>
@@ -147,8 +146,8 @@
           <figcaption>Original demo record</figcaption>
         </figure>
         <div class="song-copy">
-          <p class="eyebrow">New unreleased song</p>
           <h2 id="song-title">A Light on Shakespeare Road</h2>
+          <div class="song-title-divider" aria-hidden="true"></div>
           <p class="dedication">For Pat Fish</p>
           <p>
             I first met Pat at a photo shoot organized by Northampton's short
@@ -174,6 +173,17 @@
             is - thank you, Pat xx
           </p>
           <a class="text-link" href="#stream">Hear finished version on streaming now</a>
+          <div class="notes-gallery" aria-label="Pat Fish notebook gallery">
+            <div class="notes-gallery-copy">
+              <p class="eyebrow">Notebook</p>
+              <h3>Pat Fish notes</h3>
+            </div>
+            <div class="notes-slider">
+              <button class="note-card" type="button" data-note-index="0" aria-label="Expand Pat Fish notebook note 1">
+                <img src="./assets/pat-notes-1.jpg" alt="Notebook page with handwritten notes about Pat Fish and a 2011 Roadmender flyer" loading="lazy" />
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -183,6 +193,19 @@
         <p>Live announcements and launch events can sit here when confirmed.</p>
       </section>
     </main>
+
+    <dialog class="note-lightbox" aria-label="Expanded notebook image">
+      <button class="note-lightbox-close" type="button" aria-label="Close notebook image">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <button class="note-lightbox-nav note-lightbox-prev" type="button" aria-label="Previous notebook image">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <img src="./assets/pat-notes-1.jpg" alt="" />
+      <button class="note-lightbox-nav note-lightbox-next" type="button" aria-label="Next notebook image">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      </button>
+    </dialog>
 
     <script src="./script.js"></script>
   </body>
