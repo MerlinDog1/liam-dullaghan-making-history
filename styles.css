@@ -618,8 +618,31 @@ h2 {
 }
 
 .live-section {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.62fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 74px);
+  align-items: center;
   padding: clamp(60px, 8vw, 100px) clamp(20px, 6vw, 88px);
   background: var(--bg-soft);
+}
+
+.live-photo-wrap {
+  margin: 0;
+}
+
+.live-photo {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  object-fit: cover;
+  box-shadow: 0 28px 80px rgb(0 0 0 / 0.34);
+}
+
+.live-copy {
+  max-width: 720px;
 }
 
 input:focus,
@@ -804,7 +827,8 @@ a:focus-visible {
   }
 
   .vinyl-section,
-  .song-section {
+  .song-section,
+  .live-section {
     grid-template-columns: 1fr;
   }
 
