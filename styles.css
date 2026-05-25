@@ -510,23 +510,6 @@ h2 {
   border-top: 1px solid var(--line);
 }
 
-.notes-gallery-copy {
-  display: grid;
-  gap: 2px;
-}
-
-.notes-gallery-copy .eyebrow {
-  margin-bottom: 0;
-}
-
-.notes-gallery h3 {
-  margin: 0;
-  color: var(--ink);
-  font-size: clamp(1.05rem, 1.8vw, 1.36rem);
-  line-height: 1.05;
-  text-transform: uppercase;
-}
-
 .notes-slider {
   display: grid;
   grid-auto-columns: minmax(180px, 32%);
