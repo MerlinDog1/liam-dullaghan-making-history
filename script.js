@@ -26,9 +26,29 @@ const noteImages = noteCards.map((card) => {
 });
 let activeNoteIndex = 0;
 
+const studioCards = Array.from(document.querySelectorAll("[data-studio-index]"));
+const studioLightbox = document.querySelector(".studio-lightbox");
+const studioLightboxImage = studioLightbox?.querySelector("img");
+const studioLightboxClose = document.querySelector(".studio-lightbox-close");
+const studioLightboxPrev = document.querySelector(".studio-lightbox-prev");
+const studioLightboxNext = document.querySelector(".studio-lightbox-next");
+
+const studioImages = studioCards.map((card) => {
+  const image = card.querySelector("img");
+  return {
+    src: image?.getAttribute("src") || "",
+    alt: image?.getAttribute("alt") || "",
+  };
+});
+let activeStudioIndex = 0;
+
 if (noteImages.length <= 1) {
   noteLightboxPrev?.setAttribute("hidden", "");
   noteLightboxNext?.setAttribute("hidden", "");
+}
+if (studioImages.length <= 1) {
+  studioLightboxPrev?.setAttribute("hidden", "");
+  studioLightboxNext?.setAttribute("hidden", "");
 }
 
 function setMenu(open) {
@@ -53,6 +73,13 @@ function setActiveNote(index) {
   noteLightboxImage.alt = noteImages[activeNoteIndex].alt;
 }
 
+function setActiveStudio(index) {
+  if (!studioLightboxImage || studioImages.length === 0) return;
+  activeStudioIndex = (index + studioImages.length) % studioImages.length;
+  studioLightboxImage.src = studioImages[activeStudioIndex].src;
+  studioLightboxImage.alt = studioImages[activeStudioIndex].alt;
+}
+
 toggle?.addEventListener("click", () => setMenu(!body.classList.contains("menu-open")));
 closeButton?.addEventListener("click", () => setMenu(false));
 scrim?.addEventListener("click", () => setMenu(false));
@@ -62,6 +89,7 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     setMenu(false);
     noteLightbox?.close();
+    studioLightbox?.close();
   }
   if (!noteLightbox?.open) return;
   if (event.key === "ArrowLeft") setActiveNote(activeNoteIndex - 1);
@@ -103,6 +131,21 @@ noteLightboxNext?.addEventListener("click", () => setActiveNote(activeNoteIndex 
 
 noteLightbox?.addEventListener("click", (event) => {
   if (event.target === noteLightbox) noteLightbox.close();
+});
+
+studioCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    setActiveStudio(Number(card.dataset.studioIndex || 0));
+    studioLightbox?.showModal();
+  });
+});
+
+studioLightboxClose?.addEventListener("click", () => studioLightbox?.close());
+studioLightboxPrev?.addEventListener("click", () => setActiveStudio(activeStudioIndex - 1));
+studioLightboxNext?.addEventListener("click", () => setActiveStudio(activeStudioIndex + 1));
+
+studioLightbox?.addEventListener("click", (event) => {
+  if (event.target === studioLightbox) studioLightbox.close();
 });
 
 renderCounter();

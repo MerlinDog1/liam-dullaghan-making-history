@@ -34,6 +34,7 @@
         <a href="#stream">Stream</a>
         <a href="#vinyl">Vinyl</a>
         <a href="#live">Live</a>
+        <a href="#credits">Credits</a>
         <a class="icon-link" href="#" aria-label="Facebook">
           <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
         </a>
@@ -54,6 +55,7 @@
         <a href="#stream">Stream</a>
         <a href="#vinyl">Vinyl</a>
         <a href="#live">Live</a>
+        <a href="#credits">Credits</a>
         <a href="#shakespeare-road">Shakespeare Road</a>
       </nav>
       <div class="panel-socials" aria-label="Social links">
@@ -189,6 +191,65 @@
         </div>
       </section>
 
+      <section class="credits-section" id="credits" aria-labelledby="credits-title">
+        <div class="credits-copy">
+          <h2 id="credits-title" class="credits-heading">Album credits</h2>
+          <div class="credits-divider" aria-hidden="true"></div>
+          <dl class="credits-list">
+            <div class="credits-row">
+              <dt class="credits-key">Recorded at Dulcitone</dt>
+              <dd class="credits-val">Between April 2007 and August 2009</dd>
+            </div>
+            <div class="credits-row">
+              <dt class="credits-key">Produced by</dt>
+              <dd class="credits-val">Lee Russell</dd>
+            </div>
+            <div class="credits-row">
+              <dt class="credits-key">Words by</dt>
+              <dd class="credits-val">Liam Dullaghan</dd>
+            </div>
+            <div class="credits-row">
+              <dt class="credits-key">Music by</dt>
+              <dd class="credits-val">Liam Dullaghan and Lee Russell</dd>
+            </div>
+            <div class="credits-row">
+              <dt class="credits-key">Additional guitar on Paradise Beach</dt>
+              <dd class="credits-val">Lee Irons</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="studio-gallery" aria-label="Studio photography">
+          <button class="studio-card" type="button" data-studio-index="0" aria-label="View studio photo 1">
+            <img src="./assets/album-studio-1.jpg" alt="" loading="lazy" />
+          </button>
+          <button class="studio-card" type="button" data-studio-index="1" aria-label="View studio photo 2">
+            <img src="./assets/album-studio-2.jpg" alt="" loading="lazy" />
+          </button>
+          <button class="studio-card" type="button" data-studio-index="2" aria-label="View studio photo 3">
+            <img src="./assets/album-studio-3.jpg" alt="" loading="lazy" />
+          </button>
+          <button class="studio-card" type="button" data-studio-index="3" aria-label="View studio photo 4">
+            <img src="./assets/album-studio-4.jpg" alt="" loading="lazy" />
+          </button>
+          <button class="studio-card" type="button" data-studio-index="4" aria-label="View studio photo 5">
+            <img src="./assets/album-studio-5.jpg" alt="" loading="lazy" />
+          </button>
+          <button class="studio-card" type="button" data-studio-index="5" aria-label="View studio photo 6">
+            <img src="./assets/album-studio-6.jpg" alt="" loading="lazy" />
+          </button>
+          <button class="studio-card" type="button" data-studio-index="6" aria-label="View studio photo 7">
+            <img src="./assets/album-studio-7.jpg" alt="" loading="lazy" />
+          </button>
+          <button class="studio-card" type="button" data-studio-index="7" aria-label="View studio photo 8">
+            <img src="./assets/album-studio-8.jpg" alt="" loading="lazy" />
+          </button>
+          <button class="studio-card" type="button" data-studio-index="8" aria-label="View studio photo 9">
+            <img src="./assets/album-studio-9.jpg" alt="" loading="lazy" />
+          </button>
+        </div>
+      </section>
+
       <section class="live-section" id="live" aria-labelledby="live-title">
         <figure class="live-photo-wrap">
           <img class="live-photo" src="./assets/live-performance.jpg" alt="Liam Dullaghan performing live in black and white" loading="lazy" />
@@ -218,6 +279,19 @@
       </button>
       <img src="./assets/pat-notes-1.jpg" alt="" />
       <button class="note-lightbox-nav note-lightbox-next" type="button" aria-label="Next notebook image">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      </button>
+    </dialog>
+
+    <dialog class="studio-lightbox" aria-label="Expanded studio photo">
+      <button class="studio-lightbox-close" type="button" aria-label="Close studio photo">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+      <button class="studio-lightbox-nav studio-lightbox-prev" type="button" aria-label="Previous studio photo">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <img src="./assets/album-studio-1.jpg" alt="" />
+      <button class="studio-lightbox-nav studio-lightbox-next" type="button" aria-label="Next studio photo">
         <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
       </button>
     </dialog>
