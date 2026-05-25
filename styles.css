@@ -173,6 +173,10 @@ a {
   padding: 118px clamp(38px, 6vw, 86px) 64px 28px;
 }
 
+.stream-eyebrow {
+  margin: 4px 0 10px;
+}
+
 .eyebrow {
   margin: 0 0 16px;
   color: var(--accent);
@@ -236,6 +240,13 @@ h2 {
   gap: 10px;
   width: 100%;
   margin-bottom: 26px;
+  min-height: 62px;
+  border: 1px solid rgb(99 153 168 / 0.44);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  background:
+    linear-gradient(180deg, rgb(99 153 168 / 0.16), rgb(99 153 168 / 0.06)),
+    rgb(255 255 255 / 0.025);
 }
 
 .stream-icons a {
@@ -298,6 +309,7 @@ h2 {
 .button-copy {
   display: grid;
   gap: 2px;
+  min-width: 0;
   text-align: left;
   line-height: 1.05;
 }
@@ -346,7 +358,7 @@ h2 {
 
 .vinyl-section {
   display: grid;
-  grid-template-columns: minmax(220px, 0.54fr) minmax(0, 1fr) minmax(340px, 0.74fr);
+  grid-template-columns: minmax(220px, 0.74fr) minmax(0, 1fr);
   gap: clamp(28px, 4.8vw, 72px);
   padding: clamp(72px, 9vw, 126px) clamp(20px, 6vw, 88px);
   background: var(--bg-soft);
@@ -386,9 +398,14 @@ h2 {
 }
 
 .interest-block {
-  align-self: center;
+  grid-column: 1 / -1;
+  align-self: stretch;
   display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 0.34fr) minmax(220px, 0.42fr);
+  align-items: end;
   gap: 18px;
+  padding-top: clamp(18px, 3vw, 36px);
+  border-top: 1px solid var(--line);
 }
 
 .interest-form {
@@ -451,6 +468,7 @@ h2 {
 .share-row {
   flex-wrap: wrap;
   gap: 10px;
+  align-self: center;
   color: var(--muted);
   font-size: 0.94rem;
   font-weight: 800;
@@ -488,6 +506,11 @@ h2 {
   text-transform: uppercase;
 }
 
+.demo-link {
+  display: inline-block;
+  margin-top: 12px;
+}
+
 .song-copy {
   align-self: center;
   padding: clamp(46px, 7vw, 94px);
@@ -507,23 +530,18 @@ h2 {
 }
 
 .notes-gallery {
+  grid-column: 1 / -1;
   display: grid;
   gap: 16px;
-  margin-top: clamp(30px, 5vw, 46px);
-  padding-top: 24px;
+  margin-top: clamp(8px, 3vw, 22px);
+  padding-top: clamp(24px, 4vw, 36px);
   border-top: 1px solid var(--line);
 }
 
 .notes-slider {
   display: grid;
-  grid-auto-columns: minmax(180px, 32%);
-  grid-auto-flow: column;
-  gap: 12px;
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  padding: 2px 0 10px;
-  scroll-snap-type: x mandatory;
-  scrollbar-color: var(--accent) rgb(255 255 255 / 0.12);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 22px);
 }
 
 .note-card {
@@ -537,7 +555,6 @@ h2 {
   padding: 0;
   background: #080808;
   cursor: zoom-in;
-  scroll-snap-align: start;
 }
 
 .note-card img {
@@ -841,7 +858,7 @@ a:focus-visible {
   }
 
   .hero-copy {
-    width: min(39vw, 570px);
+    width: min(40vw, 590px);
     padding: 96px clamp(42px, 8vw, 122px) 72px 22px;
   }
 
@@ -855,26 +872,29 @@ a:focus-visible {
   }
 
   .stream-icons {
-    justify-content: flex-start;
-    width: auto;
+    justify-content: center;
+    width: min(100%, 390px);
+    min-height: 64px;
+    margin-bottom: 14px;
   }
 
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
     width: min(100%, 390px);
+    gap: 14px;
   }
 
   .button-bandcamp {
-    min-height: 86px;
+    min-height: 64px;
   }
 
   .button-vinyl {
-    min-height: 54px;
+    min-height: 64px;
   }
 
   .vinyl-section {
-    grid-template-columns: minmax(220px, 270px) minmax(360px, 520px) minmax(320px, 380px);
+    grid-template-columns: minmax(260px, 360px) minmax(460px, 620px);
     justify-content: center;
     align-items: center;
     gap: clamp(42px, 5vw, 72px);
@@ -882,7 +902,7 @@ a:focus-visible {
   }
 
   .vinyl-photo {
-    max-width: 270px;
+    max-width: 360px;
   }
 
   .section-copy h2 {
@@ -898,7 +918,9 @@ a:focus-visible {
   }
 
   .interest-block {
-    width: min(100%, 380px);
+    grid-template-columns: minmax(420px, 1fr) minmax(230px, 0.36fr) minmax(260px, 0.42fr);
+    justify-self: center;
+    width: min(100%, 1050px);
   }
 
   .counter {
@@ -938,7 +960,7 @@ a:focus-visible {
   }
 
   .notes-slider {
-    grid-auto-columns: minmax(150px, 31%);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .credits-section {
@@ -1225,12 +1247,17 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .interest-block {
+    grid-template-columns: 1fr;
+  }
+
   .song-demo {
     padding: 28px 20px 0;
   }
 
   .notes-slider {
-    grid-auto-columns: minmax(178px, 68%);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
   }
 }
 
@@ -1243,8 +1270,20 @@ a:focus-visible {
   }
 
   .button-bandcamp {
-    min-height: 76px;
+    min-height: 66px;
     padding-block: 4px;
+  }
+
+  .button-bandcamp img {
+    width: 82px;
+  }
+
+  .button-copy span:first-child {
+    font-size: 0.98rem;
+  }
+
+  .button-copy span:last-child {
+    font-size: 0.63rem;
   }
 
   .hero-actions,
@@ -1268,9 +1307,17 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .interest-block {
+    grid-template-columns: 1fr;
+  }
+
   .vinyl-section,
   .song-copy,
   .live-section {
     padding-inline: 20px;
+  }
+
+  .notes-gallery {
+    margin-inline: 20px;
   }
 }
