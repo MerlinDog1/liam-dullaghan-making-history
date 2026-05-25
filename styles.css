@@ -460,11 +460,28 @@ h2 {
   background: #000;
 }
 
-.song-image {
-  min-height: 420px;
-  background:
-    linear-gradient(90deg, rgb(0 0 0 / 0.08), rgb(0 0 0 / 0.72)),
-    url("./assets/hero-wide.jpg") center / cover no-repeat;
+.song-demo {
+  align-self: center;
+  margin: 0;
+  padding: clamp(24px, 4vw, 54px);
+}
+
+.song-demo video {
+  display: block;
+  width: 100%;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: var(--radius);
+  background: #050505;
+  box-shadow: 0 26px 72px rgb(0 0 0 / 0.46);
+}
+
+.song-demo figcaption {
+  margin-top: 12px;
+  color: rgb(249 247 238 / 0.58);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .song-copy {
@@ -669,8 +686,8 @@ a:focus-visible {
     grid-template-columns: 1fr;
   }
 
-  .song-image {
-    min-height: 52svh;
+  .song-demo {
+    padding: 28px 20px 0;
   }
 }
 
