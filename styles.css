@@ -565,15 +565,15 @@ h2 {
 .song-section {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(280px, 0.7fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   min-height: 72svh;
   background: #000;
 }
 
 .song-demo {
-  align-self: center;
-  margin: 0;
-  padding: clamp(24px, 4vw, 54px);
+  margin: clamp(28px, 5vw, 48px) 0 0;
+  padding: 0;
+  max-width: 640px;
 }
 
 .song-demo video {
@@ -601,12 +601,20 @@ h2 {
 
 .song-copy {
   align-self: center;
+  justify-self: center;
+  width: min(100%, 820px);
   padding: clamp(46px, 7vw, 94px);
+}
+
+.song-copy p {
+  color: rgb(245 241 232 / 0.78);
 }
 
 .dedication {
   color: var(--ink) !important;
+  font-size: 1rem;
   font-weight: 900;
+  line-height: 1.25;
   text-transform: uppercase;
 }
 
@@ -1223,21 +1231,23 @@ a:focus-visible {
   }
 
   .song-section {
-    grid-template-columns: minmax(360px, 480px) minmax(520px, 720px);
+    grid-template-columns: minmax(0, 820px);
     justify-content: center;
     align-items: start;
-    gap: clamp(54px, 7vw, 96px);
+    gap: clamp(44px, 5vw, 70px);
     min-height: auto;
     padding: clamp(82px, 9vw, 124px) clamp(40px, 6vw, 86px);
   }
 
   .song-demo {
-    align-self: start;
-    padding: clamp(30px, 5vw, 58px) 0 0;
+    margin-top: clamp(34px, 4vw, 54px);
+    padding: 0;
   }
 
   .song-copy {
     align-self: start;
+    justify-self: center;
+    width: min(100%, 820px);
     padding: 0;
   }
 
@@ -1248,6 +1258,11 @@ a:focus-visible {
 
   .song-title-divider {
     width: min(100%, 470px);
+  }
+
+  .notes-gallery {
+    justify-self: center;
+    width: min(calc(100vw - 80px), 1100px);
   }
 
   .notes-slider {
@@ -1447,7 +1462,8 @@ a:focus-visible {
   }
 
   .song-demo {
-    padding: 28px 20px 0;
+    margin-top: 28px;
+    padding: 0;
   }
 
   .notes-slider {
