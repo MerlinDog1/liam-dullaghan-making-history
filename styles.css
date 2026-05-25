@@ -645,6 +645,19 @@ h2 {
   max-width: 720px;
 }
 
+.live-heading {
+  margin-bottom: 0;
+  font-weight: 950;
+}
+
+.live-title-divider {
+  margin: 14px 0 18px;
+}
+
+.live-dedication {
+  margin-bottom: 22px;
+}
+
 input:focus,
 button:focus-visible,
 a:focus-visible {
