@@ -91,9 +91,14 @@ document.addEventListener("keydown", (event) => {
     noteLightbox?.close();
     studioLightbox?.close();
   }
-  if (!noteLightbox?.open) return;
-  if (event.key === "ArrowLeft") setActiveNote(activeNoteIndex - 1);
-  if (event.key === "ArrowRight") setActiveNote(activeNoteIndex + 1);
+  if (noteLightbox?.open) {
+    if (event.key === "ArrowLeft") setActiveNote(activeNoteIndex - 1);
+    if (event.key === "ArrowRight") setActiveNote(activeNoteIndex + 1);
+  }
+  if (studioLightbox?.open) {
+    if (event.key === "ArrowLeft") setActiveStudio(activeStudioIndex - 1);
+    if (event.key === "ArrowRight") setActiveStudio(activeStudioIndex + 1);
+  }
 });
 
 form?.addEventListener("submit", (event) => {
