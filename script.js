@@ -14,6 +14,7 @@ const noteLightboxImage = noteLightbox?.querySelector("img");
 const noteLightboxClose = document.querySelector(".note-lightbox-close");
 const noteLightboxPrev = document.querySelector(".note-lightbox-prev");
 const noteLightboxNext = document.querySelector(".note-lightbox-next");
+const pressCards = Array.from(document.querySelectorAll("[data-press-index]"));
 
 const storageKey = "making-history-vinyl-interest";
 const baseInterest = 37;
@@ -25,6 +26,15 @@ const noteImages = noteCards.map((card) => {
   };
 });
 let activeNoteIndex = 0;
+let activeNoteImages = noteImages;
+
+const pressImages = pressCards.map((card) => {
+  const image = card.querySelector("img");
+  return {
+    src: image?.getAttribute("src") || "",
+    alt: image?.getAttribute("alt") || "",
+  };
+});
 
 const studioCards = Array.from(document.querySelectorAll("[data-studio-index]"));
 const studioLightbox = document.querySelector(".studio-lightbox");
@@ -42,10 +52,6 @@ const studioImages = studioCards.map((card) => {
 });
 let activeStudioIndex = 0;
 
-if (noteImages.length <= 1) {
-  noteLightboxPrev?.setAttribute("hidden", "");
-  noteLightboxNext?.setAttribute("hidden", "");
-}
 if (studioImages.length <= 1) {
   studioLightboxPrev?.setAttribute("hidden", "");
   studioLightboxNext?.setAttribute("hidden", "");
@@ -66,11 +72,14 @@ function renderCounter() {
   countEl.textContent = String(baseInterest + getLocalInterest());
 }
 
-function setActiveNote(index) {
-  if (!noteLightboxImage || noteImages.length === 0) return;
-  activeNoteIndex = (index + noteImages.length) % noteImages.length;
-  noteLightboxImage.src = noteImages[activeNoteIndex].src;
-  noteLightboxImage.alt = noteImages[activeNoteIndex].alt;
+function setActiveNote(index, images = activeNoteImages) {
+  if (!noteLightboxImage || images.length === 0) return;
+  activeNoteImages = images;
+  activeNoteIndex = (index + activeNoteImages.length) % activeNoteImages.length;
+  noteLightboxImage.src = activeNoteImages[activeNoteIndex].src;
+  noteLightboxImage.alt = activeNoteImages[activeNoteIndex].alt;
+  noteLightboxPrev?.toggleAttribute("hidden", activeNoteImages.length <= 1);
+  noteLightboxNext?.toggleAttribute("hidden", activeNoteImages.length <= 1);
 }
 
 function setActiveStudio(index) {
@@ -125,7 +134,14 @@ copyLink?.addEventListener("click", async (event) => {
 
 noteCards.forEach((card) => {
   card.addEventListener("click", () => {
-    setActiveNote(Number(card.dataset.noteIndex || 0));
+    setActiveNote(Number(card.dataset.noteIndex || 0), noteImages);
+    noteLightbox?.showModal();
+  });
+});
+
+pressCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    setActiveNote(Number(card.dataset.pressIndex || 0), pressImages);
     noteLightbox?.showModal();
   });
 });

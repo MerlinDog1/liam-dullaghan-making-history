@@ -659,6 +659,19 @@ h2 {
   transform: scale(1.025);
 }
 
+.press-gallery {
+  margin-top: clamp(26px, 5vw, 48px);
+}
+
+.press-card {
+  aspect-ratio: 4 / 5.6;
+}
+
+.press-card img {
+  object-fit: contain;
+  object-position: top center;
+}
+
 .note-lightbox {
   width: min(94vw, 980px);
   max-width: none;
@@ -898,7 +911,8 @@ h2 {
 
 .lyrics-intro,
 .lyrics-list,
-.press-section {
+.press-copy,
+.press-gallery {
   width: min(100%, 1080px);
   margin-inline: auto;
 }
@@ -980,7 +994,7 @@ h2 {
 }
 
 .lyric-copy p,
-.press-section p {
+.press-copy p {
   color: var(--muted);
   font-size: clamp(1rem, 1.4vw, 1.16rem);
   line-height: 1.66;
