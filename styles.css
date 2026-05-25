@@ -11,6 +11,7 @@
   --accent-dark: #142024;
   --accent-glow: rgb(99 153 168 / 0.24);
   --radius: 8px;
+  --hero-cta-height: 64px;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
@@ -240,7 +241,7 @@ h2 {
   gap: 10px;
   width: 100%;
   margin-bottom: 26px;
-  min-height: 62px;
+  min-height: var(--hero-cta-height);
   border: 1px solid rgb(99 153 168 / 0.44);
   border-radius: var(--radius);
   padding: 10px 12px;
@@ -293,7 +294,7 @@ h2 {
 
 .button-bandcamp {
   gap: 12px;
-  min-height: 62px;
+  min-height: var(--hero-cta-height);
   padding-block: 8px;
   border-color: rgb(255 255 255 / 0.82);
   background: #fff;
@@ -335,6 +336,7 @@ h2 {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  min-height: var(--hero-cta-height);
   border-color: rgb(255 255 255 / 0.28);
   background:
     linear-gradient(90deg, rgb(0 0 0 / 0.82), rgb(0 0 0 / 0.42)),
@@ -874,7 +876,6 @@ a:focus-visible {
   .stream-icons {
     justify-content: center;
     width: min(100%, 390px);
-    min-height: 64px;
     margin-bottom: 14px;
   }
 
@@ -885,24 +886,25 @@ a:focus-visible {
     gap: 14px;
   }
 
-  .button-bandcamp {
-    min-height: 64px;
-  }
-
-  .button-vinyl {
-    min-height: 64px;
-  }
-
   .vinyl-section {
-    grid-template-columns: minmax(260px, 360px) minmax(460px, 620px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: center;
     align-items: center;
-    gap: clamp(42px, 5vw, 72px);
+    gap: clamp(42px, 6vw, 82px);
     padding: clamp(78px, 9vw, 128px) clamp(40px, 6vw, 86px);
   }
 
+  .vinyl-photo-wrap,
+  .section-copy {
+    width: min(100%, 520px);
+  }
+
+  .vinyl-photo-wrap {
+    justify-self: end;
+  }
+
   .vinyl-photo {
-    max-width: 360px;
+    max-width: none;
   }
 
   .section-copy h2 {
@@ -1067,6 +1069,10 @@ a:focus-visible {
 }
 
 @media (max-width: 940px) {
+  :root {
+    --hero-cta-height: 88px;
+  }
+
   .site-header {
     min-height: 66px;
     padding: 12px 18px;
@@ -1262,6 +1268,10 @@ a:focus-visible {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --hero-cta-height: 88px;
+  }
+
   .stream-icons a {
     width: 58px;
     height: 58px;
@@ -1270,7 +1280,6 @@ a:focus-visible {
   }
 
   .button-bandcamp {
-    min-height: 66px;
     padding-block: 4px;
   }
 
@@ -1292,7 +1301,6 @@ a:focus-visible {
   }
 
   .button-vinyl {
-    min-height: 88px;
     border-color: rgb(255 255 255 / 0.34);
     background:
       linear-gradient(90deg, rgb(0 0 0 / 0.86), rgb(0 0 0 / 0.38)),
