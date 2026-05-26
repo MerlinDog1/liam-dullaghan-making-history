@@ -1357,55 +1357,13 @@ a:focus-visible {
   }
 
   .studio-gallery {
-    grid-template-columns: repeat(12, 1fr);
-    grid-auto-rows: clamp(62px, 5.6vw, 88px);
-    grid-auto-flow: dense;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px;
   }
 
   .studio-card {
-    aspect-ratio: auto;
+    aspect-ratio: 1 / 1;
     min-height: 0;
-  }
-
-  .studio-card:nth-child(1) {
-    grid-column: span 5;
-    grid-row: span 3;
-  }
-
-  .studio-card:nth-child(2) {
-    grid-column: span 4;
-    grid-row: span 2;
-  }
-
-  .studio-card:nth-child(3) {
-    grid-column: span 3;
-    grid-row: span 2;
-  }
-
-  .studio-card:nth-child(4) {
-    grid-column: span 4;
-    grid-row: span 2;
-  }
-
-  .studio-card:nth-child(5) {
-    grid-column: span 3;
-    grid-row: span 2;
-  }
-
-  .studio-card:nth-child(6) {
-    grid-column: span 5;
-    grid-row: span 3;
-  }
-
-  .studio-card:nth-child(7) {
-    grid-column: span 3;
-    grid-row: span 3;
-  }
-
-  .studio-card:nth-child(8) {
-    grid-column: span 7;
-    grid-row: span 3;
   }
 
   .live-section {
