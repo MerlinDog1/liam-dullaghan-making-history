@@ -150,6 +150,7 @@ body.light-mode .desktop-nav {
 }
 
 .theme-button {
+  position: relative;
   display: inline-grid;
   place-items: center;
   width: 34px;
@@ -168,6 +169,23 @@ body.light-mode .desktop-nav {
     transform 160ms ease;
 }
 
+.theme-button-dark::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 7px;
+  right: 7px;
+  border-radius: 999px;
+  box-shadow: -4px 0 0 0 currentColor;
+  opacity: 0.36;
+  transform: rotate(-18deg);
+}
+
+.theme-button-dark {
+  overflow: hidden;
+}
+
 .theme-button:hover {
   color: var(--ink);
   transform: translateY(-1px);
@@ -176,6 +194,10 @@ body.light-mode .desktop-nav {
 .theme-button[aria-pressed="true"] {
   background: var(--ink);
   color: var(--bg);
+}
+
+.theme-button[aria-pressed="true"].theme-button-dark::before {
+  opacity: 0.62;
 }
 
 .icon-link,
