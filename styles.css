@@ -40,8 +40,8 @@ body.light-mode {
   --accent-glow: rgb(62 127 146 / 0.24);
   --header-bg: rgb(250 246 238 / 0.86);
   --panel-bg: #f8f3e9;
-  --surface: #fffaf0;
-  --surface-raised: #f5eedf;
+  --surface: #fffef9;
+  --surface-raised: #f9f5ec;
   --media-bg: #eee5d4;
   --image-shadow: rgb(67 54 35 / 0.2);
   --lightbox-bg: #fbf4e8;
@@ -169,22 +169,7 @@ body.light-mode .desktop-nav {
     transform 160ms ease;
 }
 
-.theme-button-dark::before {
-  content: "";
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  top: 7px;
-  right: 7px;
-  border-radius: 999px;
-  box-shadow: -4px 0 0 0 currentColor;
-  opacity: 0.36;
-  transform: rotate(-18deg);
-}
-
 .theme-button-dark {
-  overflow: hidden;
-}
 
 .theme-button:hover {
   color: var(--ink);
