@@ -8,6 +8,7 @@ const form = document.querySelector("#interest-form");
 const note = document.querySelector("#form-note");
 const countEl = document.querySelector("#interest-count");
 const copyLink = document.querySelector("[data-copy-link]");
+const themeButtons = Array.from(document.querySelectorAll("[data-theme-choice]"));
 const noteCards = Array.from(document.querySelectorAll("[data-note-index]"));
 const noteLightbox = document.querySelector(".note-lightbox");
 const noteLightboxImage = noteLightbox?.querySelector("img");
@@ -17,6 +18,7 @@ const noteLightboxNext = document.querySelector(".note-lightbox-next");
 const pressCards = Array.from(document.querySelectorAll("[data-press-index]"));
 
 const storageKey = "making-history-vinyl-interest";
+const themeStorageKey = "making-history-theme";
 const baseInterest = 37;
 const noteImages = noteCards.map((card) => {
   const image = card.querySelector("img");
@@ -72,6 +74,15 @@ function renderCounter() {
   countEl.textContent = String(baseInterest + getLocalInterest());
 }
 
+function setTheme(theme) {
+  const isLight = theme === "light";
+  body.classList.toggle("light-mode", isLight);
+  themeButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.themeChoice === theme));
+  });
+  localStorage.setItem(themeStorageKey, theme);
+}
+
 function setActiveNote(index, images = activeNoteImages) {
   if (!noteLightboxImage || images.length === 0) return;
   activeNoteImages = images;
@@ -93,6 +104,9 @@ toggle?.addEventListener("click", () => setMenu(!body.classList.contains("menu-o
 closeButton?.addEventListener("click", () => setMenu(false));
 scrim?.addEventListener("click", () => setMenu(false));
 panelLinks.forEach((link) => link.addEventListener("click", () => setMenu(false)));
+themeButtons.forEach((button) => {
+  button.addEventListener("click", () => setTheme(button.dataset.themeChoice || "dark"));
+});
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
@@ -170,3 +184,4 @@ studioLightbox?.addEventListener("click", (event) => {
 });
 
 renderCounter();
+setTheme(localStorage.getItem(themeStorageKey) || "dark");
