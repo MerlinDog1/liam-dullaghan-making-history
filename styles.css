@@ -1022,6 +1022,10 @@ h2 {
   text-transform: uppercase;
 }
 
+.lyric-copy .song-title-divider {
+  margin: clamp(10px, 1.4vw, 18px) 0 clamp(14px, 2vw, 24px);
+}
+
 .lyric-copy p,
 .press-copy p {
   color: var(--muted);
