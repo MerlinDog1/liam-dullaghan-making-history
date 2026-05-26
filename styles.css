@@ -28,8 +28,8 @@
 
 body.light-mode {
   color-scheme: light;
-  --bg: #f6f1e7;
-  --bg-soft: #ebe3d5;
+  --bg: #fbf7ef;
+  --bg-soft: #f3ecdf;
   --ink: #15120d;
   --muted: #5c554a;
   --faint: #817568;
@@ -38,13 +38,13 @@ body.light-mode {
   --accent: #3e7f92;
   --accent-dark: #f8fbf8;
   --accent-glow: rgb(62 127 146 / 0.24);
-  --header-bg: rgb(250 246 238 / 0.86);
-  --panel-bg: #f8f3e9;
+  --header-bg: rgb(255 251 244 / 0.9);
+  --panel-bg: #fffaf2;
   --surface: #fffef9;
-  --surface-raised: #f9f5ec;
-  --media-bg: #eee5d4;
+  --surface-raised: #fff9ef;
+  --media-bg: #f4ecde;
   --image-shadow: rgb(67 54 35 / 0.2);
-  --lightbox-bg: #fbf4e8;
+  --lightbox-bg: #fff9ef;
   --lightbox-backdrop: rgb(24 21 16 / 0.56);
   --quote-sheen: rgb(255 255 255 / 0.58);
 }
@@ -169,8 +169,6 @@ body.light-mode .desktop-nav {
     transform 160ms ease;
 }
 
-.theme-button-dark {
-
 .theme-button:hover {
   color: var(--ink);
   transform: translateY(-1px);
@@ -179,10 +177,6 @@ body.light-mode .desktop-nav {
 .theme-button[aria-pressed="true"] {
   background: var(--ink);
   color: var(--bg);
-}
-
-.theme-button[aria-pressed="true"].theme-button-dark::before {
-  opacity: 0.62;
 }
 
 .icon-link,
