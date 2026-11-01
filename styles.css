@@ -1108,6 +1108,20 @@ body.light-mode .song-demo video {
   filter: grayscale(1) contrast(1.05);
 }
 
+.lyric-panel {
+  align-items: start;
+}
+
+.lyric-copy .lyric-text p {
+  margin: 0 0 1.3em;
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+.lyric-copy .lyric-text p:last-child {
+  margin-bottom: 0;
+}
+
 .lyric-copy h3 {
   margin: 0;
   font-size: clamp(1.8rem, 4vw, 3.8rem);
