@@ -7,6 +7,8 @@ const panelLinks = document.querySelectorAll(".mobile-panel a");
 const form = document.querySelector("#interest-form");
 const note = document.querySelector("#form-note");
 const countEl = document.querySelector("#interest-count");
+const counterEl = document.querySelector("#interest-counter");
+const countLabel = document.querySelector("#interest-label");
 const copyLink = document.querySelector("[data-copy-link]");
 const themeButtons = Array.from(document.querySelectorAll("[data-theme-choice]"));
 const noteCards = Array.from(document.querySelectorAll("[data-note-index]"));
@@ -19,7 +21,12 @@ const pressCards = Array.from(document.querySelectorAll("[data-press-index]"));
 
 const storageKey = "making-history-vinyl-interest";
 const themeStorageKey = "making-history-theme";
-const baseInterest = 37;
+// Vinyl interest list: Supabase project "making-history". This public key can only call the two list functions;
+// it cannot read the emails.
+const interestApi = "https://pxdbewtikunsjuwmmzxi.supabase.co/rest/v1/rpc";
+const interestKey = "sb_publishable_KIk92v1qAecFYP2Zxat2iQ_6fIfX1rd";
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+let shownCount = 0;
 const noteImages = noteCards.map((card) => {
   const image = card.querySelector("img");
   return {
@@ -65,13 +72,121 @@ function setMenu(open) {
   panel?.setAttribute("aria-hidden", String(!open));
 }
 
-function getLocalInterest() {
-  return Number(localStorage.getItem(storageKey) || 0);
+// The old preview counted sign-ups in each visitor's own browser; clear what it stored.
+function clearLocalInterest() {
+  try {
+    Object.keys(localStorage)
+      .filter((key) => key === storageKey || key.startsWith(`${storageKey}:`))
+      .forEach((key) => localStorage.removeItem(key));
+  } catch {
+    // Storage can be blocked; nothing to clear then.
+  }
 }
 
-function renderCounter() {
-  if (!countEl) return;
-  countEl.textContent = String(baseInterest + getLocalInterest());
+async function callInterest(name, payload) {
+  const response = await fetch(`${interestApi}/${name}`, {
+    method: "POST",
+    headers: { apikey: interestKey, "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+  const result = await response.json().catch(() => null);
+  if (!response.ok) throw new Error(result?.message || `HTTP ${response.status}`);
+  return Number(result);
+}
+
+function renderCounter(count, animate = false) {
+  if (!countEl || !Number.isFinite(count)) return;
+  const from = shownCount;
+  shownCount = count;
+  if (countLabel) {
+    countLabel.textContent = count === 1 ? "person has registered interest" : "people have registered interest";
+  }
+  if (counterEl) counterEl.hidden = false;
+  if (!animate || reducedMotion.matches || count <= from) {
+    countEl.textContent = String(count);
+    return;
+  }
+  const start = performance.now();
+  const step = (now) => {
+    const progress = Math.min(1, (now - start) / 700);
+    countEl.textContent = String(Math.round(from + (count - from) * (1 - (1 - progress) ** 3)));
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+function loadCounter() {
+  callInterest("vinyl_interest_count", {})
+    .then((count) => renderCounter(count))
+    .catch(() => {
+      // Leave the counter hidden rather than show a wrong number.
+    });
+}
+
+// A short confetti burst from the button, in the site's own colours.
+function celebrate(origin) {
+  if (reducedMotion.matches || !origin) return;
+  const canvas = document.createElement("canvas");
+  canvas.className = "confetti-canvas";
+  canvas.setAttribute("aria-hidden", "true");
+  body.append(canvas);
+  const context = canvas.getContext("2d");
+  const ratio = Math.min(window.devicePixelRatio || 1, 2);
+  canvas.width = window.innerWidth * ratio;
+  canvas.height = window.innerHeight * ratio;
+
+  const theme = getComputedStyle(body);
+  const colours = ["--accent", "--ink", "--muted", "--faint"]
+    .map((name) => theme.getPropertyValue(name).trim())
+    .concat(["#3e7f92", "#fffaf0"])
+    .filter(Boolean);
+  const box = origin.getBoundingClientRect();
+  const pieces = Array.from({ length: 150 }, () => {
+    const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 0.95;
+    const speed = 7 + Math.random() * 10;
+    return {
+      x: box.left + box.width / 2,
+      y: box.top + box.height / 2,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      width: 6 + Math.random() * 6,
+      height: 9 + Math.random() * 9,
+      spin: Math.random() * Math.PI,
+      spinSpeed: (Math.random() - 0.5) * 0.3,
+      flip: Math.random() * Math.PI,
+      colour: colours[Math.floor(Math.random() * colours.length)],
+    };
+  });
+
+  const duration = 3200;
+  const start = performance.now();
+  let last = start;
+  const frame = (now) => {
+    const elapsed = now - start;
+    const dt = Math.min(2.5, (now - last) / 16.7);
+    last = now;
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    context.globalAlpha = Math.max(0, 1 - Math.max(0, elapsed - duration * 0.6) / (duration * 0.4));
+    pieces.forEach((piece) => {
+      piece.vy += 0.28 * dt;
+      piece.vx *= 0.985 ** dt;
+      piece.x += piece.vx * dt;
+      piece.y += piece.vy * dt;
+      piece.spin += piece.spinSpeed * dt;
+      piece.flip += 0.12 * dt;
+      const height = piece.height * Math.abs(Math.cos(piece.flip));
+      context.save();
+      context.translate(piece.x, piece.y);
+      context.rotate(piece.spin);
+      context.fillStyle = piece.colour;
+      context.fillRect(-piece.width / 2, -height / 2, piece.width, height);
+      context.restore();
+    });
+    if (elapsed < duration) requestAnimationFrame(frame);
+    else canvas.remove();
+  };
+  requestAnimationFrame(frame);
 }
 
 function setTheme(theme) {
@@ -124,20 +239,30 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-form?.addEventListener("submit", (event) => {
+form?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const data = new FormData(form);
+  // Bots fill in every field, including the hidden one people never see.
+  if (String(data.get("website") || "")) return;
   const email = String(data.get("email") || "").trim();
   if (!email) return;
 
-  if (!localStorage.getItem(`${storageKey}:${email.toLowerCase()}`)) {
-    localStorage.setItem(storageKey, String(getLocalInterest() + 1));
-    localStorage.setItem(`${storageKey}:${email.toLowerCase()}`, "1");
+  const button = form.querySelector('button[type="submit"]');
+  if (button) button.disabled = true;
+  note.textContent = "Adding you to the list…";
+  try {
+    const count = await callInterest("register_vinyl_interest", { p_email: email });
+    renderCounter(count, true);
+    note.textContent = "Thank you! You're on the list. We'll email you when the pre-order goes live.";
+    form.reset();
+    celebrate(button);
+  } catch (error) {
+    note.textContent = /invalid email/i.test(error.message)
+      ? "That email address doesn't look quite right. Please check it and try again."
+      : "Sorry, that didn't go through. Please try again in a moment.";
+  } finally {
+    if (button) button.disabled = false;
   }
-
-  renderCounter();
-  note.textContent = "Registered for this preview. Email platform connection comes later.";
-  form.reset();
 });
 
 copyLink?.addEventListener("click", async (event) => {
@@ -183,5 +308,6 @@ studioLightbox?.addEventListener("click", (event) => {
   if (event.target === studioLightbox) studioLightbox.close();
 });
 
-renderCounter();
+clearLocalInterest();
+loadCounter();
 setTheme(localStorage.getItem(themeStorageKey) || "dark");

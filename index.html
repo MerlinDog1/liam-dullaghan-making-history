@@ -135,13 +135,17 @@
               <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
               <button type="submit">Notify me</button>
             </div>
+            <div class="hp-field" aria-hidden="true">
+              <label for="interest-website">Leave this empty</label>
+              <input id="interest-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
             <p class="form-note" id="form-note" role="status" aria-live="polite">
-              Sign-up connection coming later. This preview stores interest locally.
+              Your email is only used for Making History and vinyl news. No spam, and you can unsubscribe any time.
             </p>
           </form>
-          <div class="counter" aria-label="Vinyl interest counter">
+          <div class="counter" id="interest-counter" aria-label="Vinyl interest counter" hidden>
             <strong id="interest-count">0</strong>
-            <span>people have registered interest</span>
+            <span id="interest-label">people have registered interest</span>
           </div>
           <div class="share-row" aria-label="Share links">
             <span>Let's make history. Share this page with your friends.</span>
