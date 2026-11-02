@@ -1318,6 +1318,62 @@ body.light-mode .share-row a:hover {
   margin-bottom: 22px;
 }
 
+.live-details {
+  margin: 0 0 26px;
+}
+
+.live-details .credits-row {
+  grid-template-columns: 5.5em minmax(0, 1fr);
+}
+
+.live-details .credits-key,
+.live-nowrap {
+  white-space: nowrap;
+}
+
+.live-sold-out {
+  color: #ff5f57;
+  font-style: normal;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body.light-mode .live-sold-out {
+  color: #b3261e;
+}
+
+/* Sold-out sticker across the live photo; sized from the photo's width, not the viewport. */
+.live-photo-wrap {
+  position: relative;
+  max-width: 560px;
+  container-type: inline-size;
+}
+
+.sold-out-sticker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  padding: 0.3em 0.85em 0.34em;
+  border: 3px solid #fffaf0;
+  border-radius: 6px;
+  background: #d22f27;
+  box-shadow:
+    0 0 0 3px #d22f27,
+    0 14px 34px rgb(0 0 0 / 0.5);
+  color: #fffaf0;
+  font-size: clamp(1.1rem, 5vw, 2.6rem);
+  font-size: clamp(1.1rem, 9cqi, 3.1rem);
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  pointer-events: none;
+}
+
 input:focus,
 button:focus-visible,
 a:focus-visible {
